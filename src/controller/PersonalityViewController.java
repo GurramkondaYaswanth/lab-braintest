@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import service.PersonalityCalculator;
+
 
 @WebServlet(urlPatterns= {"/personality"})
 public class PersonalityViewController extends HttpServlet {
@@ -19,6 +21,8 @@ public class PersonalityViewController extends HttpServlet {
         super();
         
     }
+    
+   
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		System.out.println("Entering do get");
@@ -30,12 +34,17 @@ public class PersonalityViewController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
+		 
 		String options=request.getParameter("selectedOptions");
 		
 		System.out.println(options);
-				
-		/* 
-
+		
+		
+		String message = "";		
+		 PersonalityCalculator Obj = new PersonalityCalculator();
+		 message  = Obj.findYourBrainType(options);
+		 
+		 
 		request.setAttribute("message", message);
 		
 		if(message!=null)
@@ -53,7 +62,7 @@ public class PersonalityViewController extends HttpServlet {
 				rd.forward(request, response);
 			}
 		
-		}*/
+		}
 		}
 	}
 
